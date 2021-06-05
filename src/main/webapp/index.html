@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solutions SAS</title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <meta charset="UTF-8">
+</head>
+<body>
+<table id="table">
+    <td id="columnaRegistrar">
+        <div id= "registroContainer">
+            <b>NUEVA TAREA</b>
+            <div id="newtask">
+                <br></br>
+                <input id ="nombre" type="text" placeholder="Nombre de la tarea">
+                <br></br>
+                <input id ="descripcion" type="text" placeholder="Descripción de la tarea">
+                <br></br>
+                <br></br>
+                <button id = "regBtn">Agregar</button>
+            </div>
+
+        </div>
+    </td>
+
+
+    <td id="columnaToDo">
+        <b>TO DO</b>
+        <div id= "taskContainer"></div>
+    </td>
+
+    <td id="columnaDoing">
+        <b>DOING</b>
+        <div id="doingContainer"></div>
+    </td>
+
+    <td id="columnaDone">
+        <b>DONE</b>
+        <div id="doneContainer"></div>
+    </td>
+</table>
+
+</body>
+</html>
+
+<script src="js/Doing.js"></script>
+<script src="js/ToDo.js"></script>
+<script src="js/index.js"></script>

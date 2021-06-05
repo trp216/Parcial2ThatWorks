@@ -1,0 +1,60 @@
+#table{
+    font-family: 'Arial', sans-serif;
+
+}
+
+#newtask{
+    background-color: #E6E6E6;
+    overflow: auto;
+    justify-content: center;
+}
+
+#regBtn{
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    padding: 7px 20px;
+    background-color: #0065FF;
+    font-family: 'Arial', sans-serif;
+    color: #FFFFFF;
+}
+
+#taskContainer{
+    background-color: #E6E6E6;
+}
+
+.taskComponent{
+    border-radius: 5px;
+    border-color: #000000;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    width: 90%;
+    position: relative;
+}
+
+.doingComponent{
+    border-radius: 5px;
+    border-color: #000000;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    width: 90%;
+    position: relative;
+}
+
+.delBtn{
+    padding: 10px 10px;
+    background: red;
+    border: none;
+    position: absolute;
+    right: 0;
+    top:0;
+}
+
+.nextBtn{
+    padding: 10px 10px;
+    background: #0065FF;
+    border: none;
+    position: absolute;
+    right: 0;
+    bottom:0;
+}

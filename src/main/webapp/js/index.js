@@ -84,6 +84,9 @@ const getAllDoingTask=()=>{
                 view2.onForwardFinish = () => {
                     getAllDoneTask();
                 };
+                view2.onBackwardFinish = () => {
+                    getAllTask();
+                };
                 doingContainer.appendChild(view2.render());
             }
         }
@@ -109,6 +112,9 @@ const getAllDoneTask =() =>{
                 let view3 = new Done(taskDTO);
                 view3.onDeleteFinish = ()=>{
                     doneContainer.removeChild(document.getElementById('doneTask'+taskDTO.id));
+                };
+                view3.onBackwardFinish = () => {
+                    getAllDoingTask();
                 };
                 doneContainer.appendChild(view3.render());
             }

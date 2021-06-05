@@ -78,3 +78,12 @@
     right: 0;
     bottom:0;
 }
+
+.prevBtn{
+    padding: 10px 10px;
+    background: #FFDD02;
+    border: none;
+    position: absolute;
+    left: 0;
+    bottom:0;
+}

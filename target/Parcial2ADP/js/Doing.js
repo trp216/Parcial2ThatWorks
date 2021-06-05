@@ -4,6 +4,7 @@ class Doing{
         this.task = task;
         this.onDeleteFinish=null;
         this.onForwardFinish = null;
+        this.onBackwardFinish = null;
     }
 
     deleteTask = ()=>{
@@ -45,20 +46,44 @@ class Doing{
         xhr.send(JSON.stringify(obj));
     }
 
+    prevState = () =>{
+        let obj = {
+            id:0,
+            nombre:this.task.nombre,
+            descripcion:this.task.descripcion
+        };
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', ()=>{
+            if(xhr.readyState == 4){
+                console.log(xhr.responseText);
+                this.deleteTask();
+                if(this.onBackwardFinish!=null){
+                    this.onBackwardFinish();
+                }
+            }
+        });
+        xhr.open('POST', 'http://localhost:8081/Parcial2ADP/api/ToDoTasks/create');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(obj));
+    }
+
     render=()=>{
         let component = document.createElement('div');
         component.id='doingTask'+this.task.id;
         component.className = 'doingComponent';
         let nombre = document.createElement('p');
         let descripcion = document.createElement('p');
-        let fecha = document.createElement('small');
+        let fecha = document.createElement('p');
         let deleteBtn = document.createElement('button');
         let nextBt = document.createElement('button');
+        let prevBtn = document.createElement('button');
 
         deleteBtn.className = 'delBtn';
         deleteBtn.innerHTML = ' ';
         nextBt.className = 'nextBtn';
         nextBt.innerHTML = ' ';
+        prevBtn.className = 'prevBtn';
+        prevBtn.innerHTML = ' ';
 
         nombre.innerHTML = this.task.nombre;
         descripcion.innerHTML = this.task.descripcion;
@@ -69,9 +94,11 @@ class Doing{
         component.appendChild(fecha);
         component.appendChild(deleteBtn);
         component.appendChild(nextBt);
+        component.appendChild(prevBtn);
 
         deleteBtn.addEventListener('click',this.deleteTask);
         nextBt.addEventListener('click', this.nextState);
+        prevBtn.addEventListener('click', this.prevState);
 
         return component;
     }

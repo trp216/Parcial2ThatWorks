@@ -52,7 +52,7 @@ class ToDo{
         component.className = 'taskComponent';
         let nombre = document.createElement('p');
         let descripcion = document.createElement('p');
-        let fecha = document.createElement('small');
+        let fecha = document.createElement('p');
         let deleteBtn = document.createElement('button');
         let nextBt = document.createElement('button');
 

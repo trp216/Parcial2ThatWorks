@@ -65,7 +65,7 @@ public class DoingService {
     public Response delete(@PathParam("id") int id){
 
         try {
-            ToDoProvider provider = new ToDoProvider();
+            DoingProvider provider = new DoingProvider();
             provider.deleteById(id);
             return Response
                     .ok(new Message("Success"))

@@ -3,6 +3,7 @@ const descripcion = document.getElementById('descripcion');
 const regBtn = document.getElementById('regBtn');
 const taskContainer = document.getElementById('taskContainer');
 const doingContainer = document.getElementById('doingContainer');
+const doneContainer = document.getElementById('doneContainer');
 
 const registrarse =()=>{
     let taskObj ={
@@ -78,7 +79,10 @@ const getAllDoingTask=()=>{
                 let taskDTO = response[i];
                 let view2 = new Doing(taskDTO);
                 view2.onDeleteFinish = ()=>{
-                    doingContainer.removeChild(document.getElementById('task'+taskDTO.id));
+                    doingContainer.removeChild(document.getElementById('doingTask'+taskDTO.id));
+                };
+                view2.onForwardFinish = () => {
+                    getAllDoneTask();
                 };
                 doingContainer.appendChild(view2.render());
             }
@@ -90,3 +94,28 @@ const getAllDoingTask=()=>{
 }
 
 getAllDoingTask();
+
+const getAllDoneTask =() =>{
+
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange' , ()=>{
+        if(xhr.readyState ==4){
+            let json = xhr.responseText;
+            let response = JSON.parse(json);
+            console.log(response);
+            taskContainer.innerHTML = '';
+            for(let i =0;i<response.length ; i++){
+                let taskDTO = response[i];
+                let view3 = new Done(taskDTO);
+                view3.onDeleteFinish = ()=>{
+                    doneContainer.removeChild(document.getElementById('doneTask'+taskDTO.id));
+                };
+                doneContainer.appendChild(view3.render());
+            }
+        }
+    });
+    xhr.open('GET','http://localhost:8081/Parcial2ADP/api/DoneTasks/all');
+    xhr.send();
+};
+
+getAllDoneTask();

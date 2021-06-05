@@ -24,6 +24,27 @@ class Doing{
         xhr.send();
     }
 
+    nextState = () =>{
+        let obj = {
+            id:0,
+            nombre:this.task.nombre,
+            descripcion:this.task.descripcion
+        };
+        let xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', ()=>{
+            if(xhr.readyState == 4){
+                console.log(xhr.responseText);
+                this.deleteTask();
+                if(this.onForwardFinish!=null){
+                    this.onForwardFinish();
+                }
+            }
+        });
+        xhr.open('POST', 'http://localhost:8081/Parcial2ADP/api/DoneTasks/create');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(obj));
+    }
+
     render=()=>{
         let component = document.createElement('div');
         component.id='doingTask'+this.task.id;
@@ -50,7 +71,7 @@ class Doing{
         component.appendChild(nextBt);
 
         deleteBtn.addEventListener('click',this.deleteTask);
-       // nextBt.addEventListener('click', this.nextState);
+        nextBt.addEventListener('click', this.nextState);
 
         return component;
     }

@@ -20,6 +20,17 @@
 }
 
 #taskContainer{
+    border-radius: 5px;
+    background-color: #E6E6E6;
+}
+
+#doingContainer{
+    border-radius: 5px;
+    background-color: #E6E6E6;
+}
+
+#doneContainer{
+    border-radius: 5px;
     background-color: #E6E6E6;
 }
 
@@ -33,6 +44,15 @@
 }
 
 .doingComponent{
+    border-radius: 5px;
+    border-color: #000000;
+    background-color: #FFFFFF;
+    margin: 0 auto;
+    width: 90%;
+    position: relative;
+}
+
+.doneComponent{
     border-radius: 5px;
     border-color: #000000;
     background-color: #FFFFFF;

@@ -15,6 +15,7 @@ public class ApplicationConfig extends Application {
 
         recursos.add(service.ToDoService.class);
         recursos.add(service.DoingService.class);
+        recursos.add(service.DoneService.class);
 
         return recursos;
     }
